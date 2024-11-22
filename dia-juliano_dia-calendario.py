@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import date, timedelta, datetime
 import csv
 
-caminho_do_arquivo = r'C:\Users\igorc\Documents\GitProjetos\AGROFV\CR10X_SAF_1.dat'
+caminho_do_arquivo = r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_SAF_1.dat'
 dados = pd.read_csv(caminho_do_arquivo, sep=',', header=[0]) 
 coluna_2=dados['h']
     
@@ -64,5 +64,5 @@ temperatura=dados['g']
 data_frame=pd.DataFrame(resultados, columns=["Dia Juliano","Data","Hora"])
 data_frame["Irradiacao"]=irradiacao
 data_frame["Temperatura"]=temperatura
-data_frame.to_csv('C:\Users\igorc\Documents\GitProjetos\AGROFV\resultados.csv', index=False, sep=',', header=True)
+#data_frame.to_csv('C:\Users\i5\Documents\GitProjetos\AGROFV\resultados.csv', index=False, sep=',', header=True)
 
