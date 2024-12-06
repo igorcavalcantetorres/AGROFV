@@ -6,6 +6,12 @@ from datetime import date, timedelta, datetime
 caminho_do_arquivo_1 = r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_SAF_1.dat'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
+# Substituir valores negativos por 0 em todo o DataFrame
+#dados[dados < 0.9] = 0
+
+# Salvar o DataFrame atualizado em um arquivo .dat
+#dados.to_csv(r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_SAF_11_sem_negativos.dat', sep=',', index=False)
+
 # Definindo a coluna de irradiação
 irradiacao = dados['f']
 
@@ -14,7 +20,7 @@ bloco = 1440
 
 # Ano e dias julianos
 ano = 2023
-dias_julianos = np.arange(63, 294)
+dias_julianos = np.arange(63, 293)
 
 # Função para calcular a data a partir do dia juliano
 def calcular_data_do_dia_juliano(ano, d):
@@ -30,6 +36,7 @@ def calcular_data_do_dia_juliano(ano, d):
 somas_por_bloco = []
 dias_julianos_por_bloco = []
 bloco_atual = []
+
 # Iteração para calcular a soma da irradiação em blocos de 1440
 for i, valor in enumerate(irradiacao):
     bloco_atual.append(valor)  # Adiciona o valor atual ao bloco
@@ -47,6 +54,8 @@ data_frame_somas = pd.DataFrame({
     'Dia_Juliano': dias_julianos_por_bloco,
     'Soma_Irradiacao_kWh': somas_por_bloco
 })
+
+data_frame_somas['Data'] = data_frame_somas['Dia_Juliano'].apply(lambda x: calcular_data_do_dia_juliano(ano, x).strftime('%d/%m/%Y'))
 
 # Exibição e salvamento do resultado
 print(data_frame_somas)
