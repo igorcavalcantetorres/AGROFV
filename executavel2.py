@@ -3,14 +3,14 @@ import pandas as pd
 from datetime import date, timedelta, datetime
 
 # Caminho do arquivo de entrada
-caminho_do_arquivo_1 = r'C:\Users\igorc\Documents\GitProjetos\AGROFV\CR10X_63_149.txt'
+caminho_do_arquivo_1 = r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_12-61.DAT'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
-# Substituir valores negativos por 0 em todo o DataFrame
+#Substituir valores negativos por 0 em todo o DataFrame
 #dados[dados < 0.9] = 0
 
-# Salvar o DataFrame atualizado em um arquivo .dat
-#dados.to_csv(r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_SAF_11_sem_negativos.dat', sep=',', index=False)
+#Salvar o DataFrame atualizado em um arquivo .dat
+#dados.to_csv(r'C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_SAF_1_sem_negativos.dat', sep=',', index=False)
 
 # Definindo a coluna de irradiação
 irradiacao = dados['f']
@@ -20,7 +20,7 @@ bloco = 1440
 
 # Ano e dias julianos
 ano = 2023
-dias_julianos = np.arange(63, 150)
+dias_julianos = np.arange(12, 62)
 
 # Função para calcular a data a partir do dia juliano
 def calcular_data_do_dia_juliano(ano, d):
