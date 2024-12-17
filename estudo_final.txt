@@ -1,4 +1,4 @@
-Meses,Irradiação_mensal (kWh/m²),Irradiação_interceptada (kWh),Temperatura_amb_media,Temperatura_cel_media,Energia gerada (kWh),Produtividade (kWh/kWp),Referência (kWh/m2/kW/m²),Fator de capacidade (%),PR (%)
+Meses,Irradiacao,Irradiacao_coletada,Temperatura_amb_media,Temperatura_cel_media,Energia,Produtividade,Referencia,FC,PR
 oct/2022,183.0475709,68025.12821,24.46945139,32.54550009,9882.6,140.4776119,183.0475709,0.188813995,0.767437728
 nov/22,171.4354908,63709.78423,25.13323611,32.92191087,9481,134.7690121,171.4354908,0.187179183,0.78612084
 dec/2022,188.8298079,70173.95439,25.58004861,33.91619692,10187.9,144.8173419,188.8298079,0.194646965,0.766919924

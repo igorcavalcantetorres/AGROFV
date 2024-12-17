@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Caminho do arquivo de entrada
-caminho_do_arquivo_1 = r'C:\Users\i5\Documents\GitProjetos\AGROFV\final.txt'
+caminho_do_arquivo_1 = r'C:\Users\i5\Documents\GitProjetos\AGROFV\estudo_final.txt'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
 print(dados)
@@ -11,6 +11,8 @@ print(dados)
 # Variáveis
 meses = dados['Meses']
 irradiacao = dados['Irradiacao']
+temperatura = dados['Temperatura_amb_media']
+temp_cell = dados['Temperatura_cel_media']
 interceptada = dados['Irradiacao_coletada']
 energia = dados['Energia']
 produtividade = dados['Produtividade']
@@ -19,7 +21,7 @@ pr=dados['PR']
 
 # Função para criar o gráfico de barras com linha de tendência
 def plot_bar_with_trend(bar_data, line_data, x_labels, xlabel, bar_ylabel, line_ylabel):
-    fig, ax1 = plt.subplots()
+    fig, ax1 = plt.subplots(figsize=(9,4))
 
     # Gráfico de barras (Variável principal)
     ax1.bar(x_labels, bar_data.values, color='skyblue', edgecolor='black')
@@ -115,38 +117,41 @@ plot_bar_with_trend(
 
 )
 
-# Função para criar o gráfico de barras com linha de tendência
-def plot_bar_with_trend(bar_data, line_data, x_labels, xlabel, bar_ylabel, line_ylabel):
-    fig, ax1 = plt.subplots()
+def plot_bar_with_two_trends(bar_data, trend1_data, trend2_data, x_labels, xlabel, bar_ylabel, trend1_ylabel, trend2_ylabel):
+    fig, ax1 = plt.subplots(figsize=(8, 4))
 
     # Gráfico de barras (Variável principal)
-    ax1.bar(x_labels, bar_data.values, color='skyblue', edgecolor='black')
+    ax1.bar(x_labels, bar_data.values, color='skyblue', edgecolor='black', label='Energia (kWh)')
     ax1.set_xlabel(xlabel)
     ax1.set_ylabel(bar_ylabel, color='blue')
     ax1.tick_params(axis='y', labelcolor='blue')
 
-    # Gráfico de linha (Linha de tendência)
+    # Gráfico de linhas (Primeira linha de tendência)
     ax2 = ax1.twinx()  # Segundo eixo Y
-    ax2.plot(x_labels, line_data.values, color='red', linewidth=2, linestyle='--')
-    ax2.set_ylabel(line_ylabel, color='red')
-    ax2.tick_params(axis='y', labelcolor='red')
+    ax2.plot(x_labels, trend1_data.values, color='red', linewidth=2, linestyle='--', label='Temperatura Ambiente (°C)')
+    ax2.plot(x_labels, trend2_data.values, color='green', linewidth=2, linestyle='-', label='Temperatura da Célula (°C)')
+    ax2.set_ylabel(f'{trend1_ylabel}', color='black')
+    ax2.tick_params(axis='y', labelcolor='black')
+
+    # Adicionar legendas
+    fig.legend(loc='upper', bbox_to_anchor=(0.1, 0.9), bbox_transform=ax1.transAxes)
 
     # Rotacionar os rótulos do eixo X
     ax1.set_xticks(range(len(x_labels)))
-    ax1.set_xticklabels(x_labels, rotation=45, ha='right')  # Rotação com alinhamento à direita
+    ax1.set_xticklabels(x_labels, rotation=45, ha='right')
 
     # Ajustar layout
     plt.tight_layout()
     plt.show()
 
-
-# Gráfico 1: Energia (barras) e Irradiação (linha)
-plot_bar_with_trend(
-    fc, 
+# Chamando a função para criar o gráfico
+plot_bar_with_two_trends(
     energia, 
-    meses,  # Usar os meses como rótulos no eixo X
+    temperatura, 
+    temp_cell, 
+    meses, 
     'Months', 
-    'Capacity Factor (%)', 
-    'Energy (kWh)'
-
+    'Energy (kWh)', 
+    'Temperature (°C)', 
+    'Temperature (°C)'
 )
