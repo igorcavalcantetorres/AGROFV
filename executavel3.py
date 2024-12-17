@@ -24,10 +24,10 @@ def plot_bar_with_trend(bar_data, line_data, x_labels, xlabel, bar_ylabel, line_
     fig, ax1 = plt.subplots(figsize=(9,4))
 
     # Gráfico de barras (Variável principal)
-    ax1.bar(x_labels, bar_data.values, color='skyblue', edgecolor='black')
+    ax1.bar(x_labels, bar_data.values, color='gray', edgecolor='black')
     ax1.set_xlabel(xlabel)
-    ax1.set_ylabel(bar_ylabel, color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel(bar_ylabel, color='black')
+    ax1.tick_params(axis='y', labelcolor='black')
 
     # Gráfico de linha (Linha de tendência)
     ax2 = ax1.twinx()  # Segundo eixo Y
@@ -50,7 +50,7 @@ plot_bar_with_trend(
     irradiacao, 
     meses,  # Usar os meses como rótulos no eixo X
     'Months', 
-    'Energy (kwh)', 
+    'Energy (kWh)', 
     'Solar Irradiation (kWh/m²)'
 
 )
@@ -121,10 +121,10 @@ def plot_bar_with_two_trends(bar_data, trend1_data, trend2_data, x_labels, xlabe
     fig, ax1 = plt.subplots(figsize=(8, 4))
 
     # Gráfico de barras (Variável principal)
-    ax1.bar(x_labels, bar_data.values, color='skyblue', edgecolor='black', label='Energia (kWh)')
+    ax1.bar(x_labels, bar_data.values, color='gray', edgecolor='gray', label='Energia (kWh)')
     ax1.set_xlabel(xlabel)
-    ax1.set_ylabel(bar_ylabel, color='blue')
-    ax1.tick_params(axis='y', labelcolor='blue')
+    ax1.set_ylabel(bar_ylabel, color='black')
+    ax1.tick_params(axis='y', labelcolor='black')
 
     # Gráfico de linhas (Primeira linha de tendência)
     ax2 = ax1.twinx()  # Segundo eixo Y
@@ -134,7 +134,8 @@ def plot_bar_with_two_trends(bar_data, trend1_data, trend2_data, x_labels, xlabe
     ax2.tick_params(axis='y', labelcolor='black')
 
     # Adicionar legendas
-    fig.legend(loc='upper', bbox_to_anchor=(0.1, 0.9), bbox_transform=ax1.transAxes)
+    legend=fig.legend(loc='upper right', bbox_to_anchor=(1, 1.01), bbox_transform=ax1.transAxes, fontsize=7.2)
+    legend.get_frame().set_linewidth(0)
 
     # Rotacionar os rótulos do eixo X
     ax1.set_xticks(range(len(x_labels)))
