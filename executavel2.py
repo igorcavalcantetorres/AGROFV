@@ -14,6 +14,8 @@ dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
 # Definindo a coluna de irradiação
 irradiacao = dados['f']
+temperatura=dados['g']
+temp_celula = temperatura
 
 # Bloco de 1440 registros
 bloco = 1440
@@ -32,31 +34,46 @@ def calcular_data_do_dia_juliano(ano, d):
         mes += 1
     return date(ano, mes + 1, d)
 
-# Lista para armazenar os resultados
+# Listas para armazenar os resultados
 somas_por_bloco = []
+temperaturas_medias = []
+temperatura_media_celula = []
 dias_julianos_por_bloco = []
-bloco_atual = []
+bloco_irradiacao = []
+bloco_temperatura = []
 
-# Iteração para calcular a soma da irradiação em blocos de 1440
-for i, valor in enumerate(irradiacao):
-    bloco_atual.append(valor)  # Adiciona o valor atual ao bloco
+# Iteração para calcular as somas e médias em blocos de 1440
+for i, (valor_irradiacao, valor_temperatura) in enumerate(zip(irradiacao, temperatura)):
+    bloco_irradiacao.append(valor_irradiacao)  # Adiciona o valor atual ao bloco de irradiação
+    bloco_temperatura.append(valor_temperatura)  # Adiciona o valor atual ao bloco de temperatura
     if (i + 1) % bloco == 0 or i == len(irradiacao) - 1:  # A cada 1440 iterações ou no último valor
-        soma_bloco = sum(bloco_atual)/60/1000  # Converte a soma para kWh/m²
+        # Cálculo da soma da irradiação
+        soma_bloco = sum(bloco_irradiacao) / 60 / 1000  # Converte a soma para kWh/m²
         somas_por_bloco.append(soma_bloco)
-        bloco_atual = []  # Reinicia o bloco
+        
+        temperatura_media_celula = 
+
+        # Cálculo da temperatura média
+        temperatura_media = np.mean(bloco_temperatura)
+        temperaturas_medias.append(temperatura_media)
         
         # Determina o dia juliano correspondente ao bloco
         dia_juliano = dias_julianos[len(somas_por_bloco) - 1] if len(somas_por_bloco) <= len(dias_julianos) else None
         dias_julianos_por_bloco.append(dia_juliano)
+        
+        # Reinicia os blocos
+        bloco_irradiacao = []
+        bloco_temperatura = []
 
 # Criação de um DataFrame para armazenar os resultados
 data_frame_somas = pd.DataFrame({
     'Dia_Juliano': dias_julianos_por_bloco,
-    'Soma_Irradiacao_kWh': somas_por_bloco
+    'Soma_Irradiacao_kWh': somas_por_bloco,
+    'Temperatura_Media': temperaturas_medias
 })
 
 data_frame_somas['Data'] = data_frame_somas['Dia_Juliano'].apply(lambda x: calcular_data_do_dia_juliano(ano, x).strftime('%d/%m/%Y'))
 
 # Exibição e salvamento do resultado
 print(data_frame_somas)
-data_frame_somas.to_csv('somas_irradiacao_dia_juliano.csv', index=False)
+data_frame_somas.to_csv('somas_e_temperaturas_dia_juliano.csv', index=False)
