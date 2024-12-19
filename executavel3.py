@@ -161,15 +161,15 @@ def plot_bar_with_two_trends_v2(bar_data, bar1_data, bar2_data, x_labels, xlabel
     x = np.arange(len(x_labels))  # Posições no eixo X
 
     # Gráfico de barras (Variável principal) - Ajuste para barras lado a lado
-    ax1.bar(x - bar_width, bar_data.values, width=bar_width, color='gray', edgecolor='gray', label='Productivity Yeld (kWh/kwp)')
+    ax1.bar(x - bar_width, bar_data.values, width=bar_width, color='gray', edgecolor='gray', label='Productivity Yeld')
     ax1.set_xlabel(xlabel)
     ax1.set_ylabel(bar_ylabel, color='black')
     ax1.tick_params(axis='y', labelcolor='black')
 
     # Gráfico de barras (Primeira linha de tendência)
     ax2 = ax1.twinx()  # Segundo eixo Y
-    ax2.bar(x, bar1_data.values, width=bar_width, color='red', label='PR (%)')
-    ax2.bar(x + bar_width, bar2_data.values, width=bar_width, color='green', label='CF (%)')
+    ax2.bar(x, bar1_data.values, width=bar_width, color='red', label='PR')
+    ax2.bar(x + bar_width, bar2_data.values, width=bar_width, color='green', label='CF')
     ax2.set_ylabel(f'{bar1_ylabel} / {bar2_ylabel}', color='black')
     ax2.tick_params(axis='y', labelcolor='black')
 
