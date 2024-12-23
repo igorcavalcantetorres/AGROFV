@@ -46,7 +46,7 @@ plot_bar_with_trend(
     energia, 
     irradiacao, 
     meses,  # Usar os meses como rótulos no eixo X
-    'Months', 
+    '', 
     'Energy (kWh)', 
     'Solar Irradiation (kWh/m²)'
 
@@ -89,7 +89,7 @@ plot_bar_with_two_trends_v2(
     pr, 
     fc, 
     meses, 
-    'Months', 
+    '', 
     'Productivity Yeld (kWh/kwp)', 
     'PR (%)', 
     'CF (%)'
@@ -115,7 +115,7 @@ def plot_bar_with_separate_secondary_axes(bar_data, temp_data, eff_data, x_label
     ax2.yaxis.set_ticks_position('right')  # Garante que os ticks fiquem no lado direito
     ax2.yaxis.set_label_position('right')  # Garante que o label fique no lado direito
     ax2.tick_params(axis='y', labelcolor='red')  # Move os ticks do eixo de temperatura para fora
-    
+    ax2.set_ylim(20, max(temp_data) * 1.1)  # Define o limite inferior para 20
     ax2.spines['right'].set_visible(True)
     
     # Adicionando um terceiro eixo para eficiência
@@ -124,6 +124,7 @@ def plot_bar_with_separate_secondary_axes(bar_data, temp_data, eff_data, x_label
     ax3.plot(x, eff_data, color='green', marker='s', label='Efficiency (%)')
     ax3.set_ylabel(eff_ylabel, color='green')
     ax3.tick_params(axis='y', labelcolor='green')  # Move os ticks do eixo de eficiência para fora
+    ax3.set_ylim(0, max(eff_data) * 1.1)  # Define o limite inferior para 20
     
     # Ajuste para evitar sobreposição
     
@@ -145,7 +146,7 @@ plot_bar_with_separate_secondary_axes(
     temp_cell,
     eficiencia,
     meses, 
-    'Months', 
+    '', 
     'Intercepted Radiation (kWh)', 
     'Temperature (°C)', 
     'Efficiency (%)'
