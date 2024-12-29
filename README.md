@@ -44,7 +44,23 @@ O data logger CR10X possui um programa módulo de função e controle, com um se
 # Analisador de energia elétrica
 
 O analisador de energia foi utilizado para obter os dados da geração solar fotovoltaica, sendo instalado junto ao quadro de distribuição da usina, com a principal informação fornecida sendo a quantidade de energia elétrica produzida (kWh). 
-Composto por quatro garras, três para referência de tensão de cada fase e uma para o neutro, 4 bobinas flexíveis de referência, três para fases e uma para o neutro. O analisador DMI P1000R possui acurácia de 99% em seus componentes, sendo um instrumento de referência e alta confiabilidade (“ISSO - Análise e telemetria - Informações do Produto”, 2017) . 
+Composto por quatro garras, três para referência de tensão de cada fase e uma para o neutro, 4 bobinas flexíveis de referência, três para fases e uma para o neutro. O analisador DMI P1000R possui acurácia de 99% em seus componentes, sendo um instrumento de referência e alta confiabilidade (“ISSO - Análise e telemetria - Informações do Produto”, 2017).
+
+# How to Cite - Como citar este repositório em trabalhos
+Se você estiver desenvolvendo um trabalho científico, e utilizar dados e informações disponibilizados neste repositório, use a referência logo abaixo:
+
+Torres, I.;Ferreira Junior, R. A.;Santos, M. A.;Souza, L. F. L.;Cavalcante, Márcio André Araújo. TÍTULO DO ARTIGO (INSERIR). (PERIÓDICO), (ANO), (VOLUME), (PÁGINAS), (DOI).
+
+@article{Torres_2025,
+  title={TÍTULO DO ARTIGO (INSERIR)},
+  author={Torres, I. and Ferreira Junior, R. A. and Santos, M. A. and Souza, L. F. L. and Cavalcante, Márcio André Araújo},
+  journal={},
+  volume={},
+  pages={3582-3593},
+  year={2025},
+  doi = {},
+  publisher={IEEE},
+}
 
 
 
