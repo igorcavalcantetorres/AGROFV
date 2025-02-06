@@ -18,7 +18,7 @@ def dividir_arquivo(input_file, linhas_por_arquivo=1440):
     # Dividindo e escrevendo os dados em novos arquivos
     for i in range(total_arquivos):
         # Definir o nome do novo arquivo
-        output_file = f'dia_{i+154}_2023.DAT'
+        output_file = f'dia_{i+337}_2022.DAT'
 
         # Pega o índice de início e fim para os dados que serão escritos neste arquivo
         inicio = i * linhas_por_arquivo
@@ -33,7 +33,7 @@ def dividir_arquivo(input_file, linhas_por_arquivo=1440):
             f_out.writelines(bloco_dados)  # Escreve o bloco de dados
 
 # Nome do arquivo .DAT original
-input_file = 'CR10X_154-292.txt'
+input_file = 'CR10X_337-365.DAT'
 
 # Chama a função para dividir o arquivo
 dividir_arquivo(input_file)
