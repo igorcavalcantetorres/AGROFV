@@ -4,7 +4,7 @@ import pandas as pd
 from datetime import date, timedelta, datetime
 
 # Caminho do arquivo de entrada
-caminho_do_arquivo_1 = r'D:\OneDrive\Documentos\AGROFV-main\CR10X_154-292.txt'
+caminho_do_arquivo_1 = r'D:C:\Users\i5\Documents\GitProjetos\AGROFV\CR10X_154-292.txt'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
 #Substituir valores negativos por 0 em todo o DataFrame
