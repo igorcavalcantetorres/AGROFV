@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Caminho do arquivo de entrada
-caminho_do_arquivo_1 = r'C:\Users\i5\Documents\GitProjetos\AGROFV\estudo_final.txt'
+caminho_do_arquivo_1 = r'C:\Users\igorc\Documents\GitProjetos\AGROFV\estudo_final.txt'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
 print(dados)
@@ -90,7 +90,7 @@ plot_bar_with_two_trends_v2(
     fc, 
     meses, 
     '', 
-    'Productivity Yeld (kWh/kwp)', 
+    'Productivity Yield (kWh/kwp)', 
     'PR (%)', 
     'CF (%)'
 )
