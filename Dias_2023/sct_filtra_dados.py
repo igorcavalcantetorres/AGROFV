@@ -26,5 +26,5 @@ def processar_arquivo(nome_arquivo):
     print(f"Arquivo processado com sucesso e salvo como {nome_arquivo}.")
 
 
-nome_arquivo_entrada = r"C:\Users\igorc\Documents\GitProjetos\AGROFV\Dias_2022\dia_365_2022.DAT"
+nome_arquivo_entrada = r"C:\Users\igorc\Documents\GitProjetos\AGROFV\Dias_2023\dia_20_2023.DAT"
 processar_arquivo(nome_arquivo_entrada)
