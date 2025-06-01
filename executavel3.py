@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Caminho do arquivo de entrada
-caminho_do_arquivo_1 = r'C:\Users\igorc\Documents\GitProjetos\AGROFV\estudo_final.txt'
+caminho_do_arquivo_1 = r'C:\Users\igor\Documents\GitProjetos\AGROFV\estudo_final.txt'
 dados = pd.read_csv(caminho_do_arquivo_1, sep=',', header=[0])
 
 print(dados)
